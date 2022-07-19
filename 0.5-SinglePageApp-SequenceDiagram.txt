@@ -1,0 +1,36 @@
+#
+#   Exercise 0.5 - Single Page App - Sequence Diagram
+#   
+#   Name:   vz8uurcjxp 
+#   Email:  vz8uurcjxp@gmail.com
+#
+#   URL:    https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6
+#
+
+title Loading a Single Page App. Sequence Diagram
+
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/spa
+Server-->Browser: Response: The actual Text/HTML file. content-type: text/html
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: Response: The CSS file. content-type: text/css
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/spa.js
+Server-->Browser: Response: The JS File. content-type: application/javascript
+
+note over Browser:
+The Browser starts executing 
+spa.js eventually making a 
+Request for JSON data from 
+server. 
+end note
+
+
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->Browser: Response: The JSON file/data. content-type: application/json
+Server-->Browser: Data: [{"content":"dfgsf","date":"2022-07-19T14:59:21.748Z"},...]
+
+
+note over Browser:
+The Browser executes the Event
+Handler from the DOM-API and
+renders the notes to display.
+end note

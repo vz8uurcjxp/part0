@@ -1,0 +1,50 @@
+#
+#   Exercise 0.4 - New Note - Sequence Diagram
+#
+#   Name:   vz8uurcjxp 
+#   Email:  vz8uurcjxp@gmail.com
+#
+#   URL:    https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6
+#
+
+title Loading a Page Containing a Simple HTML Form. Sequence Diagram
+
+
+Browser->Server: HTTP Post Request: https://studies.cs.helsinki.fi/exampleapp/new_note
+Browser-->Server: Payload: note=TestData -- Location:/exampleapp/notes -- Content Type: text/html
+Server-->Browser: Response: URL Redirect to the Headers Location. /exampleapp/notes
+
+
+note over Browser:
+The Browser starts executing 
+the Response. Everthing is the
+same from here on out.
+end note
+
+
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/notes
+Server-->Browser: Response: The actual Text/HTML file. content-type: text/html
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: Response: The CSS file. content-type: text/css
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/main.js
+Server-->Browser: Response: The JS File. content-type: application/javascript
+
+
+note over Browser:
+The Browser starts executing 
+main.js eventually making a 
+Request for JSON data from 
+server. 
+end note
+
+
+Browser->Server: HTTP GET Request: https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->Browser: Response: The JSON file/data. content-type: application/json
+Server-->Browser: Data: [{"content":"asdf","date":"2022-07-19T12:33:44.112Z"},...]
+
+
+note over Browser:
+The Browser executes the Event
+Handler from the DOM-API and
+renders the notes to display.
+end note

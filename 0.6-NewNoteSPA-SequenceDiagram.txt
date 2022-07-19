@@ -1,0 +1,43 @@
+/*
+*   Exercise 0.6 - New Note SPA - Sequence Diagram
+#
+#   Name:   vz8uurcjxp 
+#   Email:  vz8uurcjxp@gmail.com
+#
+#   URL:    https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6
+#
+
+title New note in a Single Page App. Sequence Diagram
+
+note over Browser:
+The Browser executes the Event Handler from the DOM-API and
+renders the notes to display from the inital page Request.
+end note
+
+note over Browser:
+A new note has been entered in the Text Input and the Submit 
+Input has been clicked by the User.
+end note
+
+note over Browser:
+The code that 1) fetches the Form-element and 2) registers the
+Event Handler to handle the form submit event is executed.
+end note
+
+note over Browser:
+The Event Handler Method event.preventDefault() is called to to
+prevent the default handling of form submit.
+end note
+
+note over Browser:
+The new note is created and added to the new node list. 
+end note
+
+note over Browser:
+The page is Re-renderd and after that is packaged then sent 
+to the server using the sendToServer(note) Method.
+end note
+
+Browser->Server: HTTP Post Request: https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+Browser-->Server: Payload: {content: "wadwa", date: "2022-07-19T20:41:23.685Z"} -- Location:/exampleapp/new_note_spa -- Content Type: application/json
+Server-->Browser: Status Code: 201 Created. No URL Redirect. Response: {"message":"note created"}
